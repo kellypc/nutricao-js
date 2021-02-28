@@ -138,8 +138,12 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
+  background-color: green;
 	color: white;
 	padding: 2%;
   text-align: center;
+}
+
+.paciente-invalido{
+	background-color: lightcoral;
 }
