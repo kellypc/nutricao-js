@@ -1,50 +1,63 @@
-//Botões
-var botaoAdicionar = document.querySelector("#adicionar-paciente");
-botaoAdicionar.addEventListener("click", function(event){
-  event.preventDefault();
-  var form = document.querySelector("#form-adiciona");
-  var nome = form.nome.value;
-  var peso = form.peso.value;
-  var altura = form.altura.value;
-  var gordura = form.gordura.value;
+var titulo = document.querySelector(".titulo");
+titulo.textContent = "Aparecida Nutricionista"
 
-  //Criando uma tabela
-  //A função responsável por criar elementos no Javascript é a createElement().
-  //Com ela passamos o nome da tag que queremos criar e ela nos retorna um objeto
-  // HTML que pode ser alterado com as propriedades do Javascript,
-  //como a .textContent e a .classList.
-  var pacienteTr = document.createElement("tr");
+// var paciente = document.querySelector("#primeiro-paciente");
+var pacientes = document.querySelectorAll(".paciente");
 
-  var nomeTd = document.createElement("td");
-  var pesoTd = document.createElement("td");
-  var alturaTd = document.createElement("td");
-  var gorduraTd = document.createElement("td");
-  var imcTd = document.createElement("td");
+for(var i = 0; i < pacientes.length; i++){
 
-  nomeTd.textContent = nome;
-  pesoTd.textContent = peso;
-  alturaTd.textContent = altura;
-  gorduraTd.textContent = gordura;
+  var paciente = pacientes[i];
 
-  //o appendChild coloca as td dentro das tr, logo abaixo usamos o appendChild para colocá-lo dentro da tabela pacientes
-  pacienteTr.appendChild(nomeTd);
-  pacienteTr.appendChild(pesoTd);
-  pacienteTr.appendChild(alturaTd);
-  pacienteTr.appendChild(gorduraTd);
+  var tdPeso = paciente.querySelector(".info-peso");
+  var peso = tdPeso.textContent;
 
-  var tabela = document.querySelector("#tabela-pacientes");
+  var tdAltura = paciente.querySelector(".info-altura");
+  var altura = tdAltura.textContent;
 
-  tabela.appendChild(pacienteTr);
-  // console.log(nome);
-  // console.log(peso);
-  // console.log(altura);
-  // console.log(gordura);
-});
-// Estamos capturando o evento de click com a função anonima, no exemplo de baixo tem a funçao nomeada(desaclopada)
-//estamos escultando o evento de click no titulo através do addEventListener
+  var tdImc = paciente.querySelector(".info-imc");
 
-// titulo.addEventListener("click", mostraMensagem);
-//
-// function mostraMensagem(){
-//   console.log("Olá, eu fui clicado!");
-// }
+  var pesoEhValido = validaPeso(peso);
+  var alturaEhValida = validaAltura(altura);
+
+  if(!pesoEhValido){
+    console.log("Peso inválido");
+    pesoEhValido = false;
+    tdImc.textContent = "Peso inválido!";
+    paciente.classList.add("paciente-invalido");
+  }
+
+  if(!alturaEhValida){
+    console.log("Altura inválido");
+    alturaEhValida = false;
+    tdImc.textContent = "Altura inválida!";
+    paciente.classList.add("paciente-invalido"); //chma a classe que está setada no index.css
+  }
+
+  if(alturaEhValida && pesoEhValido){
+    var imc = calculaImc(peso, altura);
+    tdImc.textContent = imc;
+  }
+
+}
+
+function validaPeso(peso){
+  if (peso >= 0 && peso < 1000) {
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function validaAltura(altura){
+  if(altura >= 0 && altura <= 3.0){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function calculaImc(peso, altura){
+  var imc = 0;
+  imc = peso / (altura *altura);
+  return imc.toFixed(2);
+}
