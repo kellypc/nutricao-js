@@ -10,9 +10,9 @@ botaoAdicionar.addEventListener("click", function(event){
   //Com ela passamos o nome da tag que queremos criar e ela nos retorna um objeto
   var pacienteTr = montaTr(paciente);
 
-  var erro = validaPaciente(paciente)
+  var erros = validaPaciente(paciente)
 
-  if(erro.length > 0){
+  if(erros.length > 0){
     var mensagemErro = document.querySelector("#mensagem-erro");
     mensagemErro.textContent = erro;
     return;
@@ -69,9 +69,16 @@ function montaTd(dado,classe){
 }
 
 function validaPaciente(paciente){
-  if(validaPeso(paciente.peso)){
-    return "";
-  }else {
-    return "O peso é inválido!";
+
+  var erros = [];
+
+  if(!validaPeso(paciente.peso)){
+    erros.push("Peso é inválido");
   }
+
+  if(!validaAltura(paciente.altura)){
+    erros.push("A ALtura é inválida!");
+  }
+
+  return erros;
 }
