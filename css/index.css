@@ -147,3 +147,7 @@ footer {
 .paciente-invalido{
 	background-color: lightcoral;
 }
+
+#mensagem-erro {
+	color: red;
+}
