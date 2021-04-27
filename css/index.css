@@ -37,7 +37,7 @@ header .container:before{
 	height: 100%;
 	margin: 0 auto;
 }
-
+or(var i = )
 section{
 	margin: 2em 0;
 	overflow: hidden;
@@ -148,6 +148,6 @@ footer {
 	background-color: lightcoral;
 }
 
-#mensagem-erro {
+#mensagens-erro {
 	color: red;
 }
