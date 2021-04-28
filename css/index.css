@@ -151,3 +151,8 @@ footer {
 #mensagens-erro {
 	color: red;
 }
+
+.fadeOut {
+	opacity: 0;
+	transition: 0.5s;
+}
