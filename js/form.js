@@ -8,7 +8,6 @@ botaoAdicionar.addEventListener("click", function(event){
   //Criando uma tabela:
   //A função responsável por criar elementos no Javascript é a createElement().
   //Com ela passamos o nome da tag que queremos criar e ela nos retorna um objeto
-  var pacienteTr = montaTr(paciente);
 
   var erros = validaPaciente(paciente)
 
@@ -17,14 +16,18 @@ botaoAdicionar.addEventListener("click", function(event){
     return;
   }
   //Adiciona paciente a tabela
-  var tabela = document.querySelector("#tabela-pacientes");
-
-  tabela.appendChild(pacienteTr);
-
+  addicionaPacienteNaTabela(paciente);
+  
   form.reset();
   var mensagensErro = document.querySelector("#mensagens-erro");
   mensagensErro.innerHTML = "";
 });
+
+function addicionaPacienteNaTabela(paciente){
+  var pacienteTr = montaTr(paciente);
+  var tabela = document.querySelector("#tabela-pacientes");
+  tabela.appendChild(pacienteTr);
+}
 // Estamos capturando o evento de click com a função anonima, no exemplo abaixo tem a funçao nomeada(desaclopada)
 //estamos escultando o evento de click no titulo através do addEventListener
 
