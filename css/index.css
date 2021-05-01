@@ -89,7 +89,11 @@ label{
 	display: inline-block;
 	padding-right: .5em;
 }
-
+#filtrar-tabela {
+    width: 200px;
+    height: 35px;
+    margin-bottom: 10px;
+}
 .grupo{
 	width: 32%;
 	display: inline-block;
@@ -99,7 +103,11 @@ label{
 button{
 	padding: .5em 2em;
 	border: 0;
-	border-bottom: 3px solid;
+	border-bottom: 3px solid;#filtrar-tabela {
+    width: 200px;
+    height: 35px;
+    margin-bottom: 10px;
+}
 	font-size: 1.2em;
 	cursor: pointer;
 	margin: 0;
@@ -155,4 +163,14 @@ footer {
 .fadeOut {
 	opacity: 0;
 	transition: 0.5s;
+}
+
+#filtrar-tabela {
+    width: 200px;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+.invisivel{
+	display: none;
 }
